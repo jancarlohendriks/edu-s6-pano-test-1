@@ -22,6 +22,18 @@ const navbar = [
 	'fullscreen',
 ];
 
+const initMarkers = [
+	{
+		id: 'circle',
+		circle: 20,
+		longitude: 0,
+		latitude: 0,
+		// x: 0,
+		// y: 0,
+		tooltip: 'A circle marker'
+	}
+];
+
 const viewer = new Viewer({
   panorama: 'https://photo-sphere-viewer-data.netlify.app/assets/sphere.jpg',
   container: 'app',
@@ -31,22 +43,7 @@ const viewer = new Viewer({
   touchmoveTwoFingers: true,
   // mousewheelCtrlKey: true,
 	// navbar: navbar,
-	plugins: [
-    [MarkersPlugin, {
-      markers: [
-        {
-          id: 'circle',
-          circle: 20,
-					longitude: 0,
-          latitude: 0,
-          // x: 0,
-          // y: 0,
-					scale: [0.5, 1],
-          tooltip: 'A circle marker'
-        }
-      ]
-    }]
-  ]
+	plugins: [[MarkersPlugin, {markers: initMarkers}]]
 });
 
 const markers = viewer.getPlugin(MarkersPlugin);
@@ -91,7 +88,8 @@ markers.on('unselect-marker', (e, marker) => {
 });
 
 markers.on('over-marker', (e, marker) => {
-	console.log('over', marker.id);
+	// console.log('over', marker.id);
+	console.log(markers)
 });
 
 markers.on('leave-marker', (e, marker) => {
