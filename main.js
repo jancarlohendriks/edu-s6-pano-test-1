@@ -46,24 +46,14 @@ const viewer = new Viewer({
 	plugins: [[MarkersPlugin, {markers: initMarkers}]]
 });
 
-function getBase64(file) {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = error => reject(error);
-  });
-}
-
 
 const uploadButton = document.getElementById('uploadInput');
-const selectedFile = uploadButton.files[0];
-uploadButton.addEventListener("change", handleFiles, false);
+uploadButton.onchange = () => handleFiles();
 function handleFiles() {
-  const fileList = this.files[0]; /* now you can work with the file list */
-	// viewer.setPanorama(fileList.name)
-	// console.log(fileList)
-	getBase64(fileList).then(data => viewer.setPanorama(data));
+	const reader = new FileReader();
+	reader.readAsDataURL(uploadButton.files[0]);
+	reader.onload = () => viewer.setPanorama(reader.result);
+	reader.onerror = error => console.log(error);
 }
 
 const markers = viewer.getPlugin(MarkersPlugin);
@@ -108,8 +98,7 @@ markers.on('unselect-marker', (e, marker) => {
 });
 
 markers.on('over-marker', (e, marker) => {
-	// console.log('over', marker.id);
-	console.log(markers)
+	console.log('over', marker.id);
 });
 
 markers.on('leave-marker', (e, marker) => {
