@@ -1,22 +1,22 @@
-import 'photo-sphere-viewer/dist/photo-sphere-viewer.css';
 import { Viewer } from "photo-sphere-viewer";
 import { MarkersPlugin } from "photo-sphere-viewer/dist/plugins/markers";
-import 'photo-sphere-viewer/dist/plugins/markers.css'
 
 const navbar = [
-	// {
-	//   id: 'my-button',
-	//   content: '<p>Hello</p>',
-	//   title: 'Hello world',
-	//   className: 'custom-button',
-	//   onClick: () => {
-	//     alert('Hello from custom button');
-	//   },
-	// },
+	{
+	  id: 'my-button',
+	  content: `<input id="uploadInput" type="file" accept="image/*" name="myFiles">`,
+	  title: 'Hello world',
+	  className: 'custom-button',
+	  onClick: () => {
+	    // alert('Hello from custom button');
+	  },
+	},
 	'autorotate',
 	'zoom',
-	'move',
-	'download',
+	// 'move',
+	// 'download',
+	'markers',
+	'markersList',
 	'description',
 	'caption',
 	'fullscreen',
@@ -42,9 +42,29 @@ const viewer = new Viewer({
   defaultLat: 0.3,
   touchmoveTwoFingers: true,
   // mousewheelCtrlKey: true,
-	// navbar: navbar,
+	navbar: navbar,
 	plugins: [[MarkersPlugin, {markers: initMarkers}]]
 });
+
+function getBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result);
+    reader.onerror = error => reject(error);
+  });
+}
+
+
+const uploadButton = document.getElementById('uploadInput');
+const selectedFile = uploadButton.files[0];
+uploadButton.addEventListener("change", handleFiles, false);
+function handleFiles() {
+  const fileList = this.files[0]; /* now you can work with the file list */
+	// viewer.setPanorama(fileList.name)
+	// console.log(fileList)
+	getBase64(fileList).then(data => viewer.setPanorama(data));
+}
 
 const markers = viewer.getPlugin(MarkersPlugin);
 

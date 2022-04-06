@@ -1,3 +1,8 @@
+// $psv-loader-color: rgba(255, 0, 0, 0.5);
+@import 'photo-sphere-viewer/src/styles/index.scss';
+@import 'photo-sphere-viewer/src/plugins/markers/style.scss';
+@import 'photo-sphere-viewer/src/plugins/virtual-tour/style.scss';
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
