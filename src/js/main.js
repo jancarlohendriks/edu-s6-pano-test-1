@@ -1,5 +1,6 @@
 import { Viewer } from "photo-sphere-viewer";
 import { MarkersPlugin } from "photo-sphere-viewer/dist/plugins/markers";
+import '../scss/style.scss'
 
 const navbar = [
 	{
