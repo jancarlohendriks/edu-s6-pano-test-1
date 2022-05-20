@@ -112,4 +112,4 @@ Working prototype page: https://jancarlohendriks.github.io/pano-test-1/
 ![Pano Config](./readme-docs/pano-config.jpg)
 
 ### Build and test infrastructure
-![Pano Deploy](./readme-docs/pano-deploy.jpg)
+![Pano Deploy](./readme-docs/deploy.jpg)
