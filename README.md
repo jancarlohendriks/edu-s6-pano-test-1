@@ -104,3 +104,12 @@ Working prototype page: https://jancarlohendriks.github.io/pano-test-1/
 ### YouTube video
 #### [Photo Sphere Viewer POC - 360 Tools](https://www.youtube.com/watch?v=oeGMcHm011g)
 [![Photo Sphere Viewer POC - 360 Tools](https://img.youtube.com/vi/oeGMcHm011g/0.jpg)](https://www.youtube.com/watch?v=oeGMcHm011g "Photo Sphere Viewer POC - 360 Tools")
+
+
+## Management and Control
+
+### Configuration, change and release management
+![Pano Config](./readme-docs/pano-config.jpg)
+
+### Build and test infrastructure
+![Pano Deploy](./readme-docs/pano-deploy.jpg)
